@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenerateQR</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* CSS to style links */
+        /* Set color for unvisited links */
+        a {
+            color: blue;
+            text-decoration: none;
+            /* Removes default underline */
+        }
 
+        /* Set color for visited links */
+        a:visited {
+            color: purple;
+        }
+
+        /* Set color for links on hover */
+        a:hover {
+            color: red;
+        }
+
+        /* Set color for links when clicked */
+        a:active {
+            color: green;
+        }
+    </style>
+</head>
+<body >
+    <div class="flex flex-col p-5 m-10  items-center  ">
+        
+        <div class="m-5 bg-red-100 border-dashed border border-black flex flex-col rounded shadow-lg">
+            <p class="text-2xl text-center mt-5 font-bold	">QR CODE GENERATER </p>
+            <input class="m-5 p-5 w-72 font-semibold	 border border-black rounded h-8" type="text"  id="qr-input" placeholder="Enter">
+             <button id="qr-btn"  type="submit" class="m-5 w-72 border border-black rounded h-8 bg-red-300">Generate QR Code</button>
+        </div>
+        
+        <div class="border m-5 shadow-inner p-1">
+            <img  src="https://tse1.mm.bing.net/th?id=OIP.J12w54G0YugYqmJXscDwxwHaHa&pid=Api&P=0&h=220" class="h-40 w-40 rounded shadow-lg" id="qr-img" alt="QR">
+        </div>
+
+        </div>
+    <script>
+
+        let qrImg = document.getElementById("qr-img");
+        let qrInput = document.getElementById("qr-input");
+        let qrBtn = document.getElementById("qr-btn");
+
+        // console.log(qrImg,qrInput,qrBtn);
+        qrBtn.addEventListener('click' , ()=>{
+                // console.log(qrInput.value);
+                if( !qrInput.value){
+                    alert("Add Text To Generate QR Code!");
+                }else{
+                    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrInput.value}`;
+                }
+        });
+    </script>
+</body>
+</html>
